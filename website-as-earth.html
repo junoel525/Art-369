@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .core {
+            height: 10vh;
+            background: rgb(255, 208, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .core-2 {
+            height: 10vh;
+            background: red;
+        }
+
+        .mantle {
+            height: 20vh;
+            background: brown;
+        }
+
+        .crust {
+            background: linear-gradient(to bottom right, rgb(0, 119, 255), rgb(2, 160, 2));
+            height: 3vh;
+        }
+
+        .sky {
+            background: skyblue;
+            height: 3vh;
+        }
+
+        .atmosphere {
+            background: lightblue;
+            height: 4vh;
+        }
+
+        .space {
+            background: linear-gradient(to bottom right, black, #420142);
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="core">
+        <h1>Core</h1>
+    </div>
+    <div class="core-2"></div>
+    <div class="mantle"></div>
+    <div class="crust"></div>
+    <div class="sky"></div>
+    <div class="atmosphere"></div>
+    <div class="space">
+        <h1>&uparrow; Website as Earth</h1>
+        <p>Website gravity works in reverse! (starts at top and build's down)</p>
+    </div>
+</body>
+</html>

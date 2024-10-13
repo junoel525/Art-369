@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body { 
+            background: rgb(15, 15, 15);
+            display: grid;
+            min-height: 100vh;
+            place-content: center;
+        }
+
+
+        .shape { 
+            height: 300px;
+            aspect-ratio: 1;
+            animation-name: shape-morph;
+            background: pink;
+            animation-duration: 5s;
+            border-radius: 50%; /* Makes corners rounded, 50% makes fully rounded */
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shape-morph {
+            0% {
+                border-radius: 50%;
+                background: pink;
+            }
+
+            25% {
+                border-radius: 0;
+                background: cyan;
+
+            }
+
+            50% {
+                transform: rotate(90deg);
+                background: blue;
+
+            }
+
+            75% {
+                border-radius: 50%;
+                background: purple;
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+
+
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Centered shape -->
+     <div class="shape"></div>
+    
+</body>
+</html>

@@ -1,0 +1,207 @@
+/* Globals */
+
+/* CSS Reset 
+Removes default padding, margin, and box behavior for total
+control of properties
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(185, 165, 120);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 60px;
+    color: white;
+}
+
+
+h2 {
+    font-size: 48px;
+}
+
+
+/* Components */
+
+.container {
+    padding: 0 20px;
+}
+
+.navbar {
+    padding: 20px;
+    background-color: #fff2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: right;
+    justify-self: right;
+    gap: 20px;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar-logo {
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    font-size: 30px;
+    color: white;
+}
+
+.screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
+}
+
+.screenshot-grid-item {
+    position: relative;
+    aspect-ratio: 1;
+    color: white;
+    font-size: 20px;
+}
+
+.screenshot-grid-item:hover .screenshot-grid-item-overlay {
+    opacity: 1;
+}
+
+.screenshot-grid-item-overlay {
+    background: #000c;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.screenshot-grid-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.detail-text {
+    color: white;
+}
+
+.detail-image img {
+    max-height: 800px;
+    max-width: 70%;
+    display: block;
+}
+
+.detail-image {
+    grid-column: 2 / -1;
+    display: flex;
+    justify-content: center;
+    background: #fff2
+}
+
+
+
+/* DELETE THE PART ABOVE WHEN THE CHATBOX PART IS IMPLEMENTED */
+/* ANIMATION + CHATBOX PART */
+
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #ffffff22;
+    padding: 20px;
+}
+
+.chat-bubble {
+    width: fit-content;
+    background: #fff5;
+    border-radius: 20px;
+    padding: 6px 12px;
+    max-width: 275px;
+}
+
+.chat-emoji {
+    font-size: 40px;
+}
+
+.chat-right {
+    margin-left: auto;
+}
+
+.chat-me {
+    background: #0084ff;
+    margin-left: auto;
+}
+
+
+/* Animations */
+
+.chat-animation {
+    animation-name: message-enter;
+    animation-duration: 2s;
+    animation-fill-mode: forwards; 
+    opacity: 0;
+}
+/* Animation fill-mode ^ determines what2the animation does
+after the animation is done.
+
+Ex: Does it return to the state it started in?
+Or does it stay in the state it ends on?
+*/
+
+
+.delay-1 { animation-delay: 1s; }
+.delay-2 { animation-delay: 2s; }
+.delay-3 { animation-delay: 3s; }
+.delay-4 { animation-delay: 4s; }
+.delay-5 { animation-delay: 5s; }
+.delay-6 { animation-delay: 6s; }
+.delay-7 { animation-delay: 7s; }
+.delay-8 { animation-delay: 4000ms; }
+.delay-9 { animation-delay: 4500ms; }
+.delay-10 { animation-delay: 5000ms; }
+
+
+@keyframes message-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+        
+    }
+
+    100% {
+        opacity: 100;
+        transform: translateY(0px);
+    }
+}
