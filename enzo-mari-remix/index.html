@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enzo Mari redux</title>
+    <style>
+
+        .image-container {
+            width: 500px; 
+            aspect-ratio: 1/1; /* Makes a square with only a set width or height */
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover; /* Keeps images from getting squished */
+            object-position: center;
+        }
+
+        .image-overlay {
+            opacity: 0;
+            backdrop-filter: blur(10px);
+            transition: opacity .2s ease;
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-content: center;
+            color: white;
+            background-color: #0005;
+        }
+
+        .image-container:hover .image-overlay {
+            opacity: 100;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="credit">This website is based on the design of the <a href="https://enzomari.com/">Enzo Mari archive</a> by <a href="https://jon-l.com/">Jon Lucas</a>.</div>
+    
+    <script>
+        // define your "batch of images" in an array
+        const imageCount = 8  // const === Constant value (cannot be changed later in code)
+        const imageSubject = 'donkey'
+        const imageFolder = 'images'
+
+        // Build the image path list
+        var imagePaths = []
+        for (var imageIndex = 1; imageIndex <= imageCount; imageIndex++) {
+            const imagePath = `${imageFolder}/${imageSubject}_${imageIndex}.png`
+            imagePaths.push(imagePath)
+        }
+
+
+        // This function returns a random imagePath from the imagePaths array
+        function randomImage() {
+            // Get the random index from the imagePaths array
+            let randomImagePathIndex = Math.floor(Math.random() * imagePaths.length);
+            // Return the random imagePath
+            let randomImagePath = imagePaths[randomImagePathIndex]
+            let newImageTag = document.createElement('img')
+            newImageTag.src = randomImagePath
+            return newImageTag
+        }
+
+        // this function adds the randomly-selected image to the page
+        function addImage() {
+
+            var newImageTag = randomImage()
+            newImageTag.style.width = '100%'
+
+            var imageContainer = document.createElement('div')
+            imageContainer.classList.toggle('image-container')
+
+            imageContainer.appendChild(newImageTag)
+
+            var imageOverlay = document.createElement('div')
+            imageOverlay.classList.toggle('image-overlay')
+            imageOverlay.innerText = 'Click to add another donkey!'
+
+            imageContainer.appendChild(imageOverlay);
+
+
+
+
+            // add the new image to the document's body (so it's visible!)
+            document.body.prepend(imageContainer);
+
+            // last step! set up the click. 
+            // You want your image to 'listen' for clicks. When its clicked, it adds a new image.
+            imageContainer.addEventListener('click', addImage);
+        }
+
+        // so that the first image appears when the page load, run the function once.
+        addImage();
+    </script>
+</body>
+
+</html>
