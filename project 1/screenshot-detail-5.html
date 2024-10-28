@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a class="navbar-logo" href="./index.html">Screenshot Project</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <h1 style="margin-top: 20px; text-align: center;">Crush Help</h1>
+            <h3 style="margin-top: 20px; text-align: center;">(A friend and me)</h3>
+            <p style="font-weight: 600; color: #fffd; text-align: center; margin-top: 10px; font-size: 24px;">November 11th, 2016</p>
+            
+            <!-- Chatbox -->
+            <div class="chatbox" style="margin-top: 10px;">
+            </div>
+        </div>
+
+        <script>
+            const chatbox = document.querySelector('.chatbox')
+
+            const chat = [
+                {
+                    message: 'Hey r u/jilli?',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'No why',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'I was earlier today',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Just wondering',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Why tho',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Idk',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Can u tell jilli something but not tell her that i asked u ask her?',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Ya',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'What',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'IM GONNA MAKE U GUYS SO CUTE TOGETHER',
+                    me: true,
+                    emoji: false,
+                },
+            ]
+
+            // Function that takes in chatMessage objects
+            const createChatBubble = (chatMessage) => {
+                let element = '';
+
+                // If emoji, give div chat-emoji class and chat-right class if it's my message
+                if (chatMessage.emoji) {
+                    element = `<div class="chat-emoji chat-animation ${chatMessage.me ? 'chat-right' : ''}">${chatMessage.message}</div>`;
+                // If not, add chat-bubble class  and chat-me class if it's my message
+                } else {
+                    element = `<div class="chat-bubble chat-animation ${chatMessage.me ? 'chat-me' : ''}">${chatMessage.message}</div>`;
+                }
+                return element;
+            }
+
+            // Converts HTML string to actual element
+            const convertStringToElement = (htmlString) => {
+                const template = document.createElement('template');
+                template.innerHTML = htmlString.trim();
+                return template.content.firstChild;
+            }
+
+            // Goes through each chat message and adds it to the chat with an appropriate delay
+            for (let i = 0; i < chat.length; i++) {
+                const chatMessage = chat[i]
+                const element = convertStringToElement(createChatBubble(chatMessage))
+                element.classList.add(`delay-${i + 1}`)
+                chatbox.appendChild(element)
+            }
+
+        </script>
+
+    </main>
+
+</body>
+
+</html>

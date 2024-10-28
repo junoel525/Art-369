@@ -188,9 +188,15 @@ Or does it stay in the state it ends on?
 .delay-5 { animation-delay: 5s; }
 .delay-6 { animation-delay: 6s; }
 .delay-7 { animation-delay: 7s; }
-.delay-8 { animation-delay: 4000ms; }
-.delay-9 { animation-delay: 4500ms; }
-.delay-10 { animation-delay: 5000ms; }
+.delay-8 { animation-delay: 8s; }
+.delay-9 { animation-delay: 9s; }
+.delay-10 { animation-delay: 10s; }
+.delay-11 { animation-delay: 11s; }
+.delay-12 { animation-delay: 12s; }
+.delay-13 { animation-delay: 13s; }
+.delay-14 { animation-delay: 14s; }
+.delay-15 { animation-delay: 15s; }
+.delay-16 { animation-delay: 16s; }
 
 
 @keyframes message-enter {

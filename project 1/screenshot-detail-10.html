@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a class="navbar-logo" href="./index.html">Screenshot Project</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <h1 style="margin-top: 20px; text-align: center;">Mrs. Bloom</h1>
+            <h3 style="margin-top: 20px; text-align: center;">(A friend and me)</h3>
+            <p style="font-weight: 600; color: #fffd; text-align: center; margin-top: 10px; font-size: 24px;">May 14th, 2017</p>
+            
+            <!-- Chatbox -->
+            <div class="chatbox" style="margin-top: 10px;">
+            </div>
+        </div>
+
+        <script>
+            const chatbox = document.querySelector('.chatbox')
+
+            const chat = [
+                {
+                    message: 'Hi... I\'m pretty sure this is mrs. Bloom, right? This is Juliette from p.5 and I was wondering if I should bring everything in my backpack during caaspp testing? Or should I just bring my chromebook? I am texting you because I don\'t have my chromebook with me right now. (I have ur phone number from the card u gave us at the beginning of school)\n\nThanks!',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Your voicemailbox is full. Tomorrow you will have testing and periods 1, 4, 6,2and 7.',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Oh ok! Thanks for telling me (for both of those things)',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'You\'re welcome. Good night.',
+                    me: false,
+                    emoji: false,
+                },
+            ]
+
+            // Function that takes in chatMessage objects
+            const createChatBubble = (chatMessage) => {
+                let element = '';
+
+                // If emoji, give div chat-emoji class and chat-right class if it's my message
+                if (chatMessage.emoji) {
+                    element = `<div class="chat-emoji chat-animation ${chatMessage.me ? 'chat-right' : ''}">${chatMessage.message}</div>`;
+                // If not, add chat-bubble class  and chat-me class if it's my message
+                } else {
+                    element = `<div class="chat-bubble chat-animation ${chatMessage.me ? 'chat-me' : ''}">${chatMessage.message}</div>`;
+                }
+                return element;
+            }
+
+            // Converts HTML string to actual element
+            const convertStringToElement = (htmlString) => {
+                const template = document.createElement('template');
+                template.innerHTML = htmlString.trim();
+                return template.content.firstChild;
+            }
+
+            // Goes through each chat message and adds it to the chat with an appropriate delay
+            for (let i = 0; i < chat.length; i++) {
+                const chatMessage = chat[i]
+                const element = convertStringToElement(createChatBubble(chatMessage))
+                element.classList.add(`delay-${i + 1}`)
+                chatbox.appendChild(element)
+            }
+
+        </script>
+
+    </main>
+
+</body>
+
+</html>

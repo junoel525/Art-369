@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a class="navbar-logo" href="./index.html">Screenshot Project</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <h1 style="margin-top: 20px; text-align: center;">Healthy Ice Cream</h1>
+            <h3 style="margin-top: 20px; text-align: center;">(A friend and me)</h3>
+            <p style="font-weight: 600; color: #fffd; text-align: center; margin-top: 10px; font-size: 24px;">June 17th, 2017</p>
+            
+            <!-- Chatbox -->
+            <div class="chatbox" style="margin-top: 10px;">
+            </div>
+        </div>
+
+        <script>
+            const chatbox = document.querySelector('.chatbox')
+
+            const chat = [
+                {
+                    message: 'Hi',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'What\'s the name of that healhty ice cream place that is actually really good called again?',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Hi Juliette!! It\'s called Pressed Juicery',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'The ice cream is called pressed freeze',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Ok tsym!',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Of course!',
+                    me: false,
+                    emoji: false,
+                },
+            ]
+
+            // Function that takes in chatMessage objects
+            const createChatBubble = (chatMessage) => {
+                let element = '';
+
+                // If emoji, give div chat-emoji class and chat-right class if it's my message
+                if (chatMessage.emoji) {
+                    element = `<div class="chat-emoji chat-animation ${chatMessage.me ? 'chat-right' : ''}">${chatMessage.message}</div>`;
+                // If not, add chat-bubble class  and chat-me class if it's my message
+                } else {
+                    element = `<div class="chat-bubble chat-animation ${chatMessage.me ? 'chat-me' : ''}">${chatMessage.message}</div>`;
+                }
+                return element;
+            }
+
+            // Converts HTML string to actual element
+            const convertStringToElement = (htmlString) => {
+                const template = document.createElement('template');
+                template.innerHTML = htmlString.trim();
+                return template.content.firstChild;
+            }
+
+            // Goes through each chat message and adds it to the chat with an appropriate delay
+            for (let i = 0; i < chat.length; i++) {
+                const chatMessage = chat[i]
+                const element = convertStringToElement(createChatBubble(chatMessage))
+                element.classList.add(`delay-${i + 1}`)
+                chatbox.appendChild(element)
+            }
+
+        </script>
+
+    </main>
+
+</body>
+
+</html>

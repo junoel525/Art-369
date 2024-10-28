@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div></div>
+        <div>
+            <a class="navbar-logo" href="./index.html">Screenshot Project</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <h1 style="margin-top: 20px; text-align: center;">Pitch Perfect</h1>
+            <h3 style="margin-top: 20px; text-align: center;">(A friend and me)</h3>
+            <p style="font-weight: 600; color: #fffd; text-align: center; margin-top: 10px; font-size: 24px;">December 29th, 2017</p>
+            
+            <!-- Chatbox -->
+            <div class="chatbox" style="margin-top: 10px;">
+            </div>
+        </div>
+
+        <script>
+            const chatbox = document.querySelector('.chatbox')
+
+            const chat = [
+                {
+                    message: 'Hey do either of you two wanna go see pitch perfect e me',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'I\'m actually going there right now could u meet us there?',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Really',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Where',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Grand lake',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Ok ya what time',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'Nevermind max',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Amc',
+                    me: false,
+                    emoji: false,
+                },
+                {
+                    message: 'Ok we were going to that one too I think lol',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: 'What time is it',
+                    me: true,
+                    emoji: false,
+                },
+                {
+                    message: '2:15!',
+                    me: false,
+                    emoji: false,
+                },
+            ]
+
+            // Function that takes in chatMessage objects
+            const createChatBubble = (chatMessage) => {
+                let element = '';
+
+                // If emoji, give div chat-emoji class and chat-right class if it's my message
+                if (chatMessage.emoji) {
+                    element = `<div class="chat-emoji chat-animation ${chatMessage.me ? 'chat-right' : ''}">${chatMessage.message}</div>`;
+                // If not, add chat-bubble class  and chat-me class if it's my message
+                } else {
+                    element = `<div class="chat-bubble chat-animation ${chatMessage.me ? 'chat-me' : ''}">${chatMessage.message}</div>`;
+                }
+                return element;
+            }
+
+            // Converts HTML string to actual element
+            const convertStringToElement = (htmlString) => {
+                const template = document.createElement('template');
+                template.innerHTML = htmlString.trim();
+                return template.content.firstChild;
+            }
+
+            // Goes through each chat message and adds it to the chat with an appropriate delay
+            for (let i = 0; i < chat.length; i++) {
+                const chatMessage = chat[i]
+                const element = convertStringToElement(createChatBubble(chatMessage))
+                element.classList.add(`delay-${i + 1}`)
+                chatbox.appendChild(element)
+            }
+
+        </script>
+
+    </main>
+
+</body>
+
+</html>

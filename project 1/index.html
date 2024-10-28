@@ -14,10 +14,10 @@
     <div class="navbar">
         <div></div>
         <div>
-            <a class="navbar-logo" href="/">Screenshot Project</a>
+            <a class="navbar-logo" href="./index.html">Screenshot Project</a>
         </div>
         <div class="nav-links">
-            <a href="/">Home</a>
+            <a href="./index.html">Home</a>
         </div>
     </div>
 
@@ -26,61 +26,61 @@
         <!-- Container-->
         <div class="container">
             <h1 style="margin-top: 40px;">All Screenshots</h1>
-            <p style="color: white; margin-top: 16px;">This is a screenshot site to recall hidden memories from middleschool.<br><br>Click on an image below to view the full story.</p>
+            <p style="color: white; margin-top: 16px;">This is a screenshot site to recall hidden memories from
+                middleschool.<br><br>Click on an image below to view the full story.</p>
 
 
             <!-- Screenshot Grid -->
-            <div class="screenshot-grid" style="margin-top: 28px;">
+            <div class="screenshot-grid" style="margin-top: 28px;"></div>
+
+            <script>
+                const images = [
+                    'photos/IMG_2908.PNG', // 1
+                    'photos/IMG_2909.PNG', // 2
+                    'photos/IMG_2910.PNG',
+                    'photos/IMG_2911.PNG',
+                    'photos/IMG_2912.PNG',
+                    'photos/IMG_2913.jpeg',
+                    'photos/IMG_2927.PNG',
+                    'photos/IMG_2915.PNG',
+                    'photos/IMG_2916.PNG',
+                    'photos/IMG_2917.PNG',
+                    'photos/IMG_2918.PNG',
+                    'photos/IMG_2919.PNG',
+                    'photos/IMG_2920.PNG',
+                    'photos/IMG_2921.PNG',
+                    'photos/IMG_2922.PNG',
+                ]
+
+                const convertStringToElement = (htmlString) => {
+                    const template = document.createElement('template');
+                    template.innerHTML = htmlString.trim();
+                    return template.content.firstChild;
+                }
 
 
-                <!-- Screenshot -->
-                <a href="screenshot-detail-1.html" class="screenshot-grid-item">
-                    <img src="photos/IMG_2908.PNG">
+                const createScreenshotGridItem = (filename, index) => {
+                    const templateString = `<a href="screenshot-detail-${index}.html" class="screenshot-grid-item">
+                    <img src="${filename}">
                     <!-- Overlay -->
                     <div class="screenshot-grid-item-overlay">
                         <p>View More</p>
                     </div>
                 </a>
+                `
+                    return convertStringToElement(templateString)
+                }
 
-                <!-- Screenshot -->
-                <a href="screenshot-detail-2.html" class="screenshot-grid-item">
-                    <img src="photos/IMG_2909.PNG">
-                    <!-- Overlay -->
-                    <div class="screenshot-grid-item-overlay">
-                        <p>View More</p>
-                    </div>
-                </a>
-                
-                 <!-- Screenshot -->
-                 <a href="screenshot-detail-3.html" class="screenshot-grid-item">
-                    <img src="photos/IMG_2910.PNG">
-                    <!-- Overlay -->
-                    <div class="screenshot-grid-item-overlay">
-                        <p>View More</p>
-                    </div>
-                </a>
-                
-                 <!-- Screenshot -->
-                 <a href="" class="screenshot-grid-item">
-                    <img src="photos/IMG_2911.PNG">
-                    <!-- Overlay -->
-                    <div class="screenshot-grid-item-overlay">
-                        <p>View More</p>
-                    </div>
-                </a>
-                
-                 <!-- Screenshot -->
-                 <a href="" class="screenshot-grid-item">
-                    <img src="photos/IMG_2912.PNG">
-                    <!-- Overlay -->
-                    <div class="screenshot-grid-item-overlay">
-                        <p>View More</p>
-                    </div>
-                </a>
-                
-                
+                const screenshotGrid = document.querySelector('.screenshot-grid')
 
-            </div>
+                for (let i = 0; i < images.length; i++) {
+                    let item = createScreenshotGridItem(images[i], i + 1)
+                    screenshotGrid.appendChild(item)
+                }
+
+
+
+            </script>
         </div>
     </main>
 
