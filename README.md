@@ -1,5 +1,9 @@
 # Art 369
+<<<<<<< HEAD
 This is the repository (repo) for mhy Art 369 projects.
+=======
+This is the repository (repo) for my Art 369 projects.
+>>>>>>> 84b594572fb09bc463a93e9530cf34a1a6391c69
 
 
 ## Features
