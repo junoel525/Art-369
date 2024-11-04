@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .keyboard {
+            display: flex; /* places everything next to eachother */
+            position: relative;
+            height: 200px;
+        }
+
+        .keyboard-key {
+            border: 1px solid black;
+            width: 40px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 10px;
+
+        }
+
+        .keyboard-key__black {
+            height: 50%;
+            width: 20px;
+            background: black;
+            position: relative;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 10px;
+
+        }
+
+        .played {
+            background: skyblue;
+        }
+
+
+    </style>
+</head>
+<body style="padding: 20px">
+    <h1>Keyboard</h1>
+
+    <div class="keyboard"">
+    </div>
+
+    <script>
+
+        const notes = [
+            { note: 'C', key: 'a', audioFile: '' },
+            { note: 'C#', key: 'w', audioFile: '' },
+            { note: 'D', key: 's', audioFile: '' },
+            { note: 'D#', key: 'e', audioFile: '' },
+            { note: 'E', key: 'd', audioFile: '' },
+            { note: 'F', key: 'f', audioFile: '' },
+            { note: 'F#', key: 't', audioFile: '' },
+            { note: 'G', key: 'g', audioFile: '' },
+            { note: 'G#', key: 'y', audioFile: '' },
+            { note: 'A', key: 'h', audioFile: '' },
+            { note: 'A#', key: 'u', audioFile: '' },
+            { note: 'B', key: 'j', audioFile: '' },
+        ]
+
+
+        const keyboardContainer = document.querySelector('.keyboard')
+
+        for (let note of notes) {
+            // Creates a keyboard key div
+            const keyDiv = document.createElement('div');
+
+            // Check if the note is sharp and assign the appropriate class
+            if (note.note.includes('#')) {
+                // If note is sharp, add a black key
+                keyDiv.classList.add('keyboard-key__black');
+            } else {
+                // If note is normal, add a white key
+                keyDiv.classList.add('keyboard-key');
+            }
+
+            document.addEventListener('keydown', (event) => {
+                console.log(event.key)
+                if (event.key === note.key) {
+                    keyDiv.classList.add('played')
+                }
+            })
+
+            document.addEventListener('keyup', (event) => {
+                if (event.key === note.key) {
+                    keyDiv.classList.remove('played')
+                }
+            })
+
+
+            keyDiv.textContent = note.key
+
+            // Add key to the keyboard div
+            keyboardContainer.appendChild(keyDiv);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
