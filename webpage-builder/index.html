@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            background: black;
+            height: 100vh;
+            display: flex;
+            flex-flow: column;
+        }
+
+        .navbar {
+            font-size: 32px;
+            font-weight: bold;
+            color: #21abde;
+            padding: 20px;
+            text-align: center;
+            background: #f1f1f1;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            flex: 1;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        .field:nth-child(1n+1) {
+            margin-top: 10px;
+        }
+
+        label {
+            display: block;
+        }
+
+        .form-section {
+            background: white;
+            padding: 10px;
+        }
+
+        .webpage-section {
+            background-image: url(https://picsum.photos/1920/1080);
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-color: #0009;
+        }
+
+        
+
+        .webpage-section {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .weppage-content-container {
+            text-align: center;
+            color: white;
+            width: 100%;
+        }
+
+        #builderHeading {
+            font-size: 60px;
+        }
+
+        #builderSubheading {
+            font-size: 28px;
+            margin-top: 8px;
+        }
+        
+        #builderButton {
+            margin-top: 50px;
+            display: inline-block;
+            font-size: 20px;
+            padding: 12px 40px;
+            border-radius: 10px;
+            background-color: #21abde;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        #builderButton:hover {
+            background-color: #2abcf1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">Webpage Builder</nav>
+
+    <div class="container">
+        <!-- Form Section -->
+        <section class="form-section">
+            <h2>Builder</h2>
+            <form action="">
+                <div class="field">
+                    <label for="">Heading</label>
+                    <input id="heading" type="text">
+                </div>
+                <div class="field">
+                    <label for="">Subheading</label>
+                    <input id="subheading" type="text">
+                </div>
+                <div class="field">
+                    <label for="">Button Text</label>
+                    <input id="buttonText" type="text">
+                </div>
+                <div class="field">
+                    <label for="">Button Link</label>
+                    <input id="buttonLink" type="text">
+                </div>
+
+            </form>
+        </section>
+
+        <!-- Webpage Section -->
+        <section class="webpage-section">
+            <div class="weppage-content-container">
+                <hgroup>
+                    <h1 id="builderHeading">Heading</h1>
+                    <p id="builderSubheading">Subheading</p>
+                </hgroup>
+                <a id="builderButton" target="_blank">Button</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+
+        // Form Inputs
+        const heading = document.querySelector('#heading')
+        const subheading = document.querySelector('#subheading')
+        const buttonText = document.querySelector('#buttonText')
+        const buttonLink = document.querySelector('#buttonLink')
+
+        // Builder Tags
+        const headingTag = document.querySelector('#builderHeading')
+        const subheadingTag = document.querySelector('#builderSubheading')
+        const buttonTag = document.querySelector('#builderButton')
+
+
+
+        heading.addEventListener('input', (event) => {
+            if (event.target.value) {
+                headingTag.textContent = event.target.value
+            } else {
+                headingTag.textContent = 'Heading'
+            }
+        })
+
+        subheading.addEventListener('input', (event) => {
+            if (event.target.value) {
+                subheadingTag.textContent = event.target.value
+            } else {
+                subheadingTag.textContent = 'Subheading'
+            }
+        })
+
+        buttonText.addEventListener('input', (event) => {
+            if (event.target.value) {
+                buttonTag.textContent = event.target.value
+            } else {
+                buttonTag.textContent = 'Button'
+            }
+        })
+
+        buttonLink.addEventListener('input', (event) => {
+            if (event.target.value) {
+                buttonTag.href = event.target.value
+            } else {
+                buttonTag.href = '#'
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
