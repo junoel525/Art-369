@@ -1,0 +1,97 @@
+:root {
+    --pink: #f85bfd;
+    --light-pink: #fdd1ff;
+    --light-blue: #87ceeb;
+    --blue: #28b3eb;
+    --light-yellow: #fdfd86;
+    --tan: #f4a460;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--pink);
+    padding: 20px;
+    height: 100vh;
+
+}
+
+h1 {
+    color: var(--light-yellow);
+    font-size: 48px;
+}
+
+.game-score {
+    color: var(--light-yellow);
+    font-weight: 600;
+    font-size: 28px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.game-board {
+    margin-top: 20px;
+    height: 80%;
+    width: 100%;
+    border: 5px var(--light-yellow) solid;
+    position: relative;
+    background-color: #0005;
+
+    background-blend-mode: overlay;
+    background-image: url('./images/stock-images/tree-view-middle.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.reset-button {
+    background: var(--blue);
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    background: var(--light-blue);
+}
+
+.squirrel {
+    transition: all 2s ease;
+    position: absolute;
+}
+
+.squirrel img {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.navbar-link-list {    
+    justify-self: end; /* Keeps links on the right side */
+}
+
+.navbar-link {
+    color: var(--light-yellow);
+}
+
+.navbar-logo {
+    text-decoration: none;
+    color: var(--light-yellow);
+    font-size: 32px;
+    font-weight: 600;
+    white-space: nowrap;
+}
