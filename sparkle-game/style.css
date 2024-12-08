@@ -17,7 +17,11 @@ body {
     background: var(--pink);
     padding: 20px;
     height: 100vh;
+    font-family: "Mystery Quest", system-ui;
+}
 
+button {
+font-family: "Mystery Quest", system-ui;
 }
 
 h1 {
@@ -51,7 +55,7 @@ h1 {
     background: var(--blue);
     color: white;
     padding: 20px;
-    font-size: 20px;
+    font-size: 72px;
     font-weight: 600;
     border-radius: 10px;
     border: none;
@@ -64,7 +68,7 @@ h1 {
 }
 
 .squirrel {
-    transition: all 2s ease;
+    transition: all 6s ease;
     position: absolute;
 }
 
